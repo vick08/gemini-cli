@@ -34,17 +34,13 @@ export const ScreenReaderAppLayout: React.FC = () => {
 
       {uiState.dialogsVisible && uiState.ctrlDPressedOnce && (
         <Box marginTop={1}>
-          <Text color={theme.status.warning}>
-            Press Ctrl+C again to exit.
-          </Text>
+          <Text color={theme.status.warning}>Press Ctrl+C again to exit.</Text>
         </Box>
       )}
 
       {uiState.dialogsVisible && uiState.ctrlDPressedOnce && (
         <Box marginTop={1}>
-          <Text color={theme.status.warning}>
-            Press Ctrl+D again to exit.
-          </Text>
+          <Text color={theme.status.warning}>Press Ctrl+D again to exit.</Text>
         </Box>
       )}
     </Box>
