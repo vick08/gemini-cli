@@ -26,12 +26,12 @@ import { useSettings } from '../contexts/SettingsContext.js';
 import { ApprovalMode } from '@google/gemini-cli-core';
 import { StreamingState } from '../types.js';
 import { ConfigInitDisplay } from '../components/ConfigInitDisplay.js';
-import { useScreenReaderLayout } from '../layouts/useScreenReaderLayout.js';
+import { useLayoutConfig } from '../hooks/useLayoutConfig.js';
 
 export const Composer = () => {
   const config = useConfig();
   const settings = useSettings();
-  const layout = useScreenReaderLayout();
+  const layout = useLayoutConfig();
   const uiState = useUIState();
   const uiActions = useUIActions();
   const { vimEnabled, vimMode } = useVimMode();
