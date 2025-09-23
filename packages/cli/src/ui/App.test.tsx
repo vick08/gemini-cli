@@ -32,19 +32,43 @@ vi.mock('./components/QuittingDisplay.js', () => ({
   QuittingDisplay: () => <Text>Quitting...</Text>,
 }));
 
-vi.mock('./layouts/DefaultAppLayout.js', () => ({
-  DefaultAppLayout: () => <Text>DefaultAppLayout</Text>,
+vi.mock('./components/Footer.js', () => ({
+  Footer: () => <Text>Footer</Text>,
 }));
 
-vi.mock('./layouts/ScreenReaderAppLayout.js', () => ({
-  ScreenReaderAppLayout: () => <Text>ScreenReaderAppLayout</Text>,
+vi.mock('./semantic-colors.js', () => ({
+  theme: {
+    status: {
+      warning: 'yellow',
+    },
+  },
 }));
+
+// Don't mock the layout components - let them render normally so tests can see the Ctrl messages
 
 vi.mock('./hooks/useLayoutConfig.js', () => ({
   useLayoutConfig: () => ({
     mode: 'default',
     shouldUseStatic: true,
     shouldShowFooterInComposer: true,
+  }),
+}));
+
+vi.mock('./hooks/useFooterProps.js', () => ({
+  useFooterProps: () => ({
+    model: 'test-model',
+    targetDir: '/test',
+    debugMode: false,
+    branchName: 'test-branch',
+    debugMessage: '',
+    corgiMode: false,
+    errorCount: 0,
+    showErrorDetails: false,
+    showMemoryUsage: false,
+    promptTokenCount: 0,
+    nightly: false,
+    isTrustedFolder: true,
+    vimMode: undefined,
   }),
 }));
 
@@ -70,7 +94,8 @@ describe('App', () => {
       </UIStateContext.Provider>,
     );
 
-    expect(lastFrame()).toContain('DefaultAppLayout');
+    expect(lastFrame()).toContain('MainContent');
+    expect(lastFrame()).toContain('Composer');
   });
 
   it('should render quitting display when quittingMessages is set', () => {
@@ -100,7 +125,8 @@ describe('App', () => {
       </UIStateContext.Provider>,
     );
 
-    expect(lastFrame()).toContain('DefaultAppLayout');
+    expect(lastFrame()).toContain('MainContent');
+    expect(lastFrame()).toContain('DialogManager');
   });
 
   it('should show Ctrl+C exit prompt when dialogs are visible and ctrlCPressedOnce is true', () => {
