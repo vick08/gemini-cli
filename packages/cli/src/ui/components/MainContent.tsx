@@ -77,7 +77,7 @@ export const MainContent = () => {
             constrainHeight={uiState.constrainHeight}
             isEditorDialogOpen={uiState.isEditorDialogOpen}
             activePtyId={uiState.activePtyId?.toString()}
-            shellFocused={uiState.shellFocused}
+            embeddedShellFocused={uiState.embeddedShellFocused}
           />
           <ShowMoreLines constrainHeight={uiState.constrainHeight} />
         </Box>

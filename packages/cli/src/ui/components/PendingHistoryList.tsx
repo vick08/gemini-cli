@@ -14,7 +14,7 @@ interface PendingHistoryListProps {
   constrainHeight?: boolean;
   isEditorDialogOpen: boolean;
   activePtyId?: string;
-  shellFocused?: boolean;
+  embeddedShellFocused?: boolean;
 }
 
 export const PendingHistoryList = ({
@@ -24,7 +24,7 @@ export const PendingHistoryList = ({
   constrainHeight,
   isEditorDialogOpen,
   activePtyId,
-  shellFocused,
+  embeddedShellFocused,
 }: PendingHistoryListProps) => (
   <>
     {pendingHistoryItems.map((item, i) => (
@@ -38,7 +38,7 @@ export const PendingHistoryList = ({
         isPending={true}
         isFocused={!isEditorDialogOpen}
         activeShellPtyId={activePtyId ? parseInt(activePtyId, 10) : null}
-        shellFocused={shellFocused}
+        embeddedShellFocused={embeddedShellFocused}
       />
     ))}
   </>
